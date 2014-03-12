@@ -1,13 +1,13 @@
 module Spree
 	HomeController.class_eval do
 
-		def shipment_status(status)
+		def self.shipment_status(status)
 			#Alternatively, using ActiveRecord's method_missing magic:
 			#  Spree::Order.find_by_shipment_state(status)
 			@orders = Spree::Order.where(:shipment_state => status)
 		end
 
-		def price_between(*range_values)
+		def self.price_between(*range_values)
 			min, max = range_values
 
 			if min && max
